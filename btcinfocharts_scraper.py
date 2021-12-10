@@ -7,6 +7,8 @@ def current_date():
     return today
     
 print(current_date())
+
+
     
 def scrape_data():
     
@@ -32,4 +34,11 @@ def scrape_data():
     
     assert 'https://bitinfocharts.com/comparison/median_transaction_fee3momUSD' == url_list[0]
     assert 'https://bitinfocharts.com/comparison/confirmationtime7std' == url_list[-1]
+    
+    import pandas as pd
+    
+    df_feature=pd.DataFrame(features,columns=['Features']) # convert feature list to dataframe
+    df_url=pd.DataFrame(url_list,columns=['URL']) # convert url list to dataframe
+    
+    assert len(df_feature) == len(df_url)
     
