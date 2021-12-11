@@ -54,3 +54,19 @@ def feats_to_url():
     return url_list, features
     
     
+    
+def create_dfs(url_list, features):
+    """
+        Returns a dataframe of the urls
+        And a dataframe of the feature names
+    
+    """
+
+    import pandas as pd
+    
+    df_features=pd.DataFrame(features,columns=['Features']) # convert feature list to dataframe
+    df_url=pd.DataFrame(url_list,columns=['URL']) # convert url list to dataframe
+    
+    assert len(df_features) == len(df_url)
+    
+    return df_url, df_features
