@@ -70,3 +70,45 @@ def create_dfs(url_list, features):
     assert len(df_features) == len(df_url)
     
     return df_url, df_features
+    
+
+
+def scrape_url(url, feature):
+    """
+        Takes url and a feature name as input
+        Scrapes the bitinfocharts.org site to return
+        The current value for today's date
+        
+    """
+    
+    from bs4 import BeautifulSoup #module for web scraping install by pip install beautifulsoup4
+    import requests #for requesting html. install by pip install requests
+    from requests.adapters import HTTPAdapter
+    from requests.packages.urllib3.util.retry import Retry
+    import re #regular expression for data extraction by pattern matching. installed by default.
+    
+    session = requests.Session()
+    retry = Retry(connect=10, backoff_factor=3)
+    adapter = HTTPAdapter(max_retries=retry)
+    session.mount('http://', adapter)
+    session.mount('https://', adapter)
+    page=session.get(url)
+    print('Retrieving data from', url)
+    
+    #create the beautiful soup object
+    soup = BeautifulSoup(page.content, 'html.parser')
+    # extract the portion with dates and values
+    all_soup = soup.find_all('script')[4]
+    # convert the data into string format
+    soup_string = str(all_soup.string)
+    # get the current date
+    date = current_date()
+    # create a regular expression for extracting the value associated with the date
+    regex = date + '\"\),([0-9\.]+)'
+    soup_regex = re.compile(regex)
+    # call that regular expression on the html string
+    regex_result = soup_regex.search(soup_string)
+    # isolate just the feature value for the current date
+    feat_val = regex_result.group(1)
+    
+    return date, feature, feat_val
