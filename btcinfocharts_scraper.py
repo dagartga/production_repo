@@ -112,3 +112,41 @@ def scrape_url(url, feature):
     feat_val = regex_result.group(1)
     
     return date, feature, feat_val
+
+
+def grab_the_data():
+    """ 
+        Iterate through a list of features and their urls
+        and scrape the data using beautiful soup 
+        return the scraped data in the form of a dataframe
+    """    
+    
+    import pandas as pd
+    
+    url_list, features = feats_to_url() # turn the best features into a list of urls
+    
+    df_url, df_features = create_dfs(url_list, features) # convert the urls and features into dataframes
+    
+    current_data = {}
+            
+    # iterate through the dataframe urls    
+    for x in range(len(df_url)):
+
+        url = df_url.iloc[x, 0]
+        feature = df_features.iloc[x, 0]
+        
+        # scrape the website and return a dictionary of feat:values
+        date, feature, feat_val = scrape_url(url, feature)
+        if x < (len(df_url) - 1):
+            current_data[feature] = feat_val
+        else:
+            current_data[feature] = feat_val
+            feature_dic = {date : current_data}
+            
+            
+        # convert the dictionary to dataframe
+        df = pd.DataFrame.from_dict(feature_dic)
+        # transpose to put the features in the columns and the date as the index
+        current_df = df.T
+    
+    return current_df
