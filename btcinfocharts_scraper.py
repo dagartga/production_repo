@@ -148,5 +148,8 @@ def grab_the_data():
         df = pd.DataFrame.from_dict(feature_dic)
         # transpose to put the features in the columns and the date as the index
         current_df = df.T
+        # re-index to have the date as a column
+        current_df.reset_index(inplace=True)
+        current_df = current_df.rename(columns={'index' : 'Date'})
     
     return current_df
