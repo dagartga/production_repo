@@ -4,3 +4,5 @@ pytest
 pytest-cov
 click
 pandas
+keras
+h5py
