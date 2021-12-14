@@ -150,5 +150,9 @@ def grab_the_data():
         # re-index to have the date as a column
         current_df.reset_index(inplace=True)
         current_df = current_df.rename(columns={'index' : 'Date'})
+        
+    print(feature_dic)
     
     return current_df
+    
+grab_the_data()
