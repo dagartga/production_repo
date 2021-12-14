@@ -22,18 +22,17 @@ def feats_to_url():
     """
     
     # the list of features to scrape
-    features = ['median_transaction_fee3momUSD',
+    features = [
+                'median_transaction_fee3momUSD',
                 'fee_to_reward7momUSD',
-                'top100cap30trx',
+                'top100cap7mom',
                 'mining_profitability7rsi',
                 'top100cap14mom',
                 'price3wmaUSD',
-                'price30smaUSD',
-                'price30emaUSD',
-                'hashrate30sma',
+                'transactionvalue90emaUSD',
                 'difficulty30sma',
-                'price3rsiUSD',
-                'confirmationtime7std']
+                'fee_to_reward90smaUSD'
+                ]
     
     import re
     
