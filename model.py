@@ -25,3 +25,39 @@ def get_full_dataset():
     select_df = full_df[features]
     
     return select_df
+
+
+def preprocess_the_data():
+    """
+        Takes in a dataframe of all the data
+        to fit the scaler using MinMaxScaler and RobustScaler
+        Then transform the new data using the scaler and retun it as a vector
+    """
+    
+    from sklearn.preprocessing import MinMaxScaler, RobustScaler
+    from sklearn.pipeline import Pipeline
+    from btcinfocharts_scraper import grab_the_data
+    
+
+    # scale the data
+    estimators = [] # create a list for the scalers
+    estimators.append(['minmax', MinMaxScaler()])
+    estimators.append(['robust', RobustScaler()])
+    
+    # add the scalers to the Pipeline
+    scale = Pipeline(estimators, verbose=True)
+    
+    # get the full dataset
+    df = get_full_dataset()
+    
+    # get the new dataset for the most recent data
+    new_df = grab_the_data()
+    
+    # fit the scaler to all old data
+    scaled_df = scale.fit(df)
+    
+    # scale the new data
+    transformed_new_data = scale.transform(new_df)
+    
+    return transformed_new_data
+    
