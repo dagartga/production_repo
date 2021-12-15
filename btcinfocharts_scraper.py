@@ -1,4 +1,4 @@
-def current_date():
+def today():
     """
         Returns the current date
         in a string format 'yyyy/mm/dd'
@@ -10,6 +10,7 @@ def current_date():
     # get the current date
     today = date.today()
     return str(today).replace('-', '/')
+    
     
     
 def yesterday():
