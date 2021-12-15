@@ -93,7 +93,15 @@ def scrape_url(url, feature):
     """
         Takes url and a feature name as input
         Scrapes the bitinfocharts.org site to return
-        The current value for today's date
+        The feature value for today and yesterday
+        
+        Ouptut is dictionary format:
+                    {
+                    today_date: 
+                            {feature : feature_value},
+                    yesterdays_date:
+                             {feature : feature_value}
+                    }
         
     """
     
@@ -109,7 +117,7 @@ def scrape_url(url, feature):
     session.mount('http://', adapter)
     session.mount('https://', adapter)
     page=session.get(url)
-    print('Retrieving data from', url)
+    #print('Retrieving data from', url)
     
     #create the beautiful soup object
     soup = BeautifulSoup(page.content, 'html.parser')
@@ -117,18 +125,41 @@ def scrape_url(url, feature):
     all_soup = soup.find_all('script')[4]
     # convert the data into string format
     soup_string = str(all_soup.string)
-    # get the current date
-    date = current_date()
+    
+    # assign current date
+    tday = today()
+    
     # create a regular expression for extracting the value associated with the date
-    regex = date + '\"\),([0-9\.]+)'
+    regex = tday + '\"\),([0-9\.]+)'
     soup_regex = re.compile(regex)
     # call that regular expression on the html string
     regex_result = soup_regex.search(soup_string)
-    # isolate just the feature value for the current date
-    feat_val = regex_result.group(1)
     
-    return date, feature, feat_val
-
+    # create a conditional statement for when current date's data has not been posted
+    if regex_result is None:
+        today_feat_val = None
+    else:
+        today_feat_val = regex_result.group(1)
+    
+    # extract values for yesterday        
+    yday = yesterday()
+    regex = yday + '\"\),([0-9\.]+)'
+    soup_regex = re.compile(regex)
+    regex_result = soup_regex.search(soup_string)
+                
+    # isolate just the feature value for the current date
+    yesterday_feat_val = regex_result.group(1)
+    
+    # create a dictionary for each day and the values
+    feat_val_dic = {
+                    tday:
+                        {feature:today_feat_val},
+                    yday:
+                        {feature:yesterday_feat_val}
+                   }
+    
+    return feat_val_dic
+    
 
 def grab_the_data():
     """ 
