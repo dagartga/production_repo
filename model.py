@@ -37,8 +37,7 @@ def preprocess_the_data():
     from sklearn.preprocessing import MinMaxScaler, RobustScaler
     from sklearn.pipeline import Pipeline
     from btcinfocharts_scraper import grab_the_data
-    
-
+  
     # scale the data
     estimators = [] # create a list for the scalers
     estimators.append(['minmax', MinMaxScaler()])
@@ -50,6 +49,12 @@ def preprocess_the_data():
     # get the full dataset
     df = get_full_dataset()
     
+    # extract the data from the dates of Interval 4
+    date_bool = (df.iloc[:, 0] >= '2013/04/01') & (df.iloc[:, 0] <= '2021/09/01')
+    df = df[date_bool]
+    # drop the date column
+    df = df.drop(columns=['Date'])
+    
     # get the new dataset for the most recent data
     new_df = grab_the_data()
     
@@ -60,7 +65,7 @@ def preprocess_the_data():
     transformed_new_data = scale.transform(new_df)
     
     return transformed_new_data
-    
+     
     
 def prediction():
     
