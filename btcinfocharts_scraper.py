@@ -167,40 +167,45 @@ def grab_the_data():
         and scrape the data using beautiful soup 
         return the scraped data in the form of a dataframe
     """    
-    
     import pandas as pd
     
-    url_list, features = feats_to_url() # turn the best features into a list of urls
+    url_list, features = feats_to_url()
     
-    df_url, df_features = create_dfs(url_list, features) # convert the urls and features into dataframes
-    
+    # create dictionary to store data
     current_data = {}
-            
-    # iterate through the dataframe urls    
-    for x in range(len(df_url)):
+    yester_data = {}        
+        
+    # iterate through the list of urls    
+    for x in range(len(url_list)):
 
-        url = df_url.iloc[x, 0]
-        feature = df_features.iloc[x, 0]
+        url = url_list[x]
+        feature = features[x]
         
         # scrape the website and return a dictionary of feat:values
-        date, feature, feat_val = scrape_url(url, feature)
-        if x < (len(df_url) - 1):
-            current_data[feature] = feat_val
-        else:
-            current_data[feature] = feat_val
-            feature_dic = {date : current_data}
-            
-            
-        # convert the dictionary to dataframe
-        df = pd.DataFrame.from_dict(feature_dic)
-        # transpose to put the features in the columns and the date as the index
-        current_df = df.T
-        # re-index to have the date as a column
-        current_df.reset_index(inplace=True)
-        current_df = current_df.rename(columns={'index' : 'Date'})
+        feat_val_dic = scrape_url(url, feature)
+        #print(feat_val_dic)
         
-    print(feature_dic)
+        if x == 0:
+            df = pd.DataFrame.from_dict(feat_val_dic)
+        else:
+            df_2 = pd.DataFrame.from_dict(feat_val_dic)
+            df = pd.concat([df, df_2])
+
+    # check if None is in today's date
+    if None in df.iloc[:,0]:
+        print('Not all the data is available for today.')
+        print('Instead yesterday\'s data will be used.')
+        # create a dataframe from yesterday's data to be returned
+        yesterday_df = pd.DataFrame(df.iloc[:,1])
+        yesterday_df = yesterday_df.T
+        return yesterday_df
     
-    return current_df
+    else:
+        print('All of the data for today is available.')
+        print('Today\'s data will be used')
+        # create a dataframe from today's data to be returned
+        today_df = pd.DataFrame(df.iloc[:, 0])
+        today_df = today_df.T
+        return today_df
     
 grab_the_data()
