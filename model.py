@@ -25,5 +25,3 @@ def get_full_dataset():
     select_df = full_df[features]
     
     return select_df
-    
-    
