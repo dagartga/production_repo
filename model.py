@@ -1,15 +1,29 @@
-def model():
-    
+def get_full_dataset():
     """
-        Takes in the current data scraped from btcinfocharts.org
-        and returns a price prediction for tomorrow
+        Load in the full dataset scraped from btcinfocharts
+        Extract and return only a dataframe with the selected features
     """
+       
+    import pandas as pd
+
+    path = './Merged_Unconverted_BTC_Data.csv'
+    full_df = pd.read_csv(path)
     
-    from keras.models import load_model
-    import h5py
+    features = [
+            'median_transaction_fee3momUSD',
+            'fee_to_reward7momUSD',
+            'top100cap7mom',
+            'mining_profitability7rsi',
+            'top100cap14mom',
+            'price3wmaUSD',
+            'transactionvalue90emaUSD',
+            'difficulty30sma',
+            'fee_to_reward90smaUSD'
+            ]
     
-    # load the best model from the training and testing
-    model = load_model('ANN4_reg_nextday300Adam0-01relu64Int4_341.hdf5')
+    # extract only the data from the features desired
+    select_df = full_df[features]
+    
+    return select_df
     
     
-model()
