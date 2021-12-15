@@ -11,6 +11,22 @@ def current_date():
     today = date.today()
     return str(today).replace('-', '/')
     
+    
+def yesterday():
+    """ 
+        Returns the date for yesterday
+        in a string format 'yyyy/mm/dd
+        For when current data is not available
+    """
+    
+    from datetime import date, timedelta
+    
+    # get the current date
+    today = date.today()
+    #subtract one day
+    yesterday = today - timedelta(days=1)
+    
+    return str(yesterday).replace('-', '/')
 
 
 
