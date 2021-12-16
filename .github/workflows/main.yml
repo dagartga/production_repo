@@ -12,12 +12,4 @@ jobs:
     - name: Install dependencies
       run: |
         make install
-    - name: Lint code with pylint
-      run: |
-        make lint
-    - name: Test code with pytest
-      run: |
-        make test
-    - name: Format code with black
-      run: |
-        make format
+
