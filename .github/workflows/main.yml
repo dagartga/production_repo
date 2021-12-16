@@ -1,8 +1,8 @@
-name: AWS Amazon Linux 2 3.7.9
+name: Python application test with Github Actions
 on: [push]
 jobs:
   build:
-    runs-on: amazonlinux
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.7
@@ -11,13 +11,13 @@ jobs:
         python-version: 3.7
     - name: Install dependencies
       run: |
-        make install-amazon-linux
-    - name: Lint
+        make install
+    - name: Lint code with pylint
       run: |
         make lint
-    - name: Test
+    - name: Test code with pytest
       run: |
         make test
-    - name: Format
+    - name: Format code with black
       run: |
         make format
