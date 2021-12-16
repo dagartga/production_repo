@@ -1,23 +1,14 @@
-name: Python application test with Github Actions
+name: AWS in Python 3.7.12
 on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python 3.7
+    - name: Set up Python 3.7.12
       uses: actions/setup-python@v1
       with:
-        python-version: 3.7
+        python-version: 3.7.12
     - name: Install dependencies
       run: |
         make install
-    - name: Lint code with pylint
-      run: |
-        make lint
-    - name: Test code with pytest
-      run: |
-        make test
-    - name: Format code with black
-      run: |
-        make format
