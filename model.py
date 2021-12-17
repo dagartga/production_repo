@@ -59,7 +59,7 @@ def preprocess_the_data():
     new_df = grab_the_data()
     
     # fit the scaler to all old data
-    scaled_df = scale.fit(df)
+    scale.fit(df)
     
     # scale the new data
     transformed_new_data = scale.transform(new_df)
@@ -89,5 +89,8 @@ def prediction():
     pred_next_day_price = ann_model.predict(current_scaled_data)
     
     return pred_next_day_price
+    
+    
+
     
     
