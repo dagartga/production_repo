@@ -168,6 +168,7 @@ def grab_the_data():
         return the scraped data in the form of a dataframe
     """    
     import pandas as pd
+    from datetime import date, timedelta
     
     url_list, features = feats_to_url()
     
@@ -190,22 +191,29 @@ def grab_the_data():
         else:
             df_2 = pd.DataFrame.from_dict(feat_val_dic)
             df = pd.concat([df, df_2])
+            
+    # create a list of values for today to check for None type
+    today_val_list = [val for val in df.iloc[:, 0]]
 
+    # get the current date
+    tday = date.today()
+    #subtract one day
+    yday = tday - timedelta(days=1)
+    
     # check if None is in today's date
-    if None in df.iloc[:,0]:
-        print('Not all the data is available for today.')
-        print('Instead yesterday\'s data will be used.')
+    if None in today_val_list:
+        print('Not all the data is available for today, {}.'.format(tday))
+        print('Instead yesterday\'s {} data will be used.'.format(yday))
         # create a dataframe from yesterday's data to be returned
         yesterday_df = pd.DataFrame(df.iloc[:,1])
         yesterday_df = yesterday_df.T
         return yesterday_df
     
     else:
-        print('All of the data for today is available.')
-        print('Today\'s data will be used')
+        print('All of the data for today {} is available.'.format(tday))
+        print('Today\'s {} data will be used'.format(tday))
         # create a dataframe from today's data to be returned
         today_df = pd.DataFrame(df.iloc[:, 0])
         today_df = today_df.T
         return today_df
     
-grab_the_data()
