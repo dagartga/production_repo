@@ -8,8 +8,8 @@ def today():
     from datetime import date
     
     # get the current date
-    today = date.today()
-    return str(today).replace('-', '/')
+    today_var1 = date.today()
+    return str(today_var1).replace('-', '/')
     
     
     
@@ -23,11 +23,11 @@ def yesterday():
     from datetime import date, timedelta
     
     # get the current date
-    today = date.today()
+    today_var2 = date.today()
     #subtract one day
-    yesterday = today - timedelta(days=1)
+    yestday = today_var2 - timedelta(days=1)
     
-    return str(yesterday).replace('-', '/')
+    return str(yestday).replace('-', '/')
 
 
 
