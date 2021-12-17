@@ -171,10 +171,6 @@ def grab_the_data():
     from datetime import date, timedelta
     
     url_list, features = feats_to_url()
-    
-    # create dictionary to store data
-    current_data = {}
-    yester_data = {}        
         
     # iterate through the list of urls    
     for x in range(len(url_list)):
