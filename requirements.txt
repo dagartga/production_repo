@@ -7,3 +7,5 @@ pandas
 keras
 h5py
 sklearn
+requests
+bs4
