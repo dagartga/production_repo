@@ -179,7 +179,6 @@ def grab_the_data():
 
         # scrape the website and return a dictionary of feat:values
         feat_val_dic = scrape_url(url, feature)
-        #print(feat_val_dic)
 
         if x == 0:
             df = pd.DataFrame.from_dict(feat_val_dic)
