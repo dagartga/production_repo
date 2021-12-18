@@ -77,7 +77,6 @@ def prediction():
     """
     
     from keras.models import load_model
-    import h5py
     
     # load the best model from the training and testing
     ann_model = load_model('./trained_models/ANN4_reg_nextday300Adam0-01relu64Int4_341.hdf5')
