@@ -1,6 +1,7 @@
 import pytest
-from model import get_full_dataset, preprocess_the_data
-
+from model import get_full_dataset
+from model import preprocess_the_data
+from model import prediction
 
 
 features = [
@@ -20,32 +21,31 @@ features = [
 def test_get_full_dataset():
 
     df = get_full_dataset()
+    feats = ['Date'] + features
 
     # check that the features are in the dataframe
-    assert features == df.columns
+    for i in range(len(feats)):
+        assert feats[i] == df.columns[i]
 
     # check that the data is what is expected
     assert (4104, 10) == df.shape
 
     # check that no null values are present
-    assert df.isnull() == 0
-
+    for i in range(len(feats)):
+        assert df.iloc[:, i].isnull().sum() == 0
 
 
 
 def test_preprocess_the_data():
 
-    df = preprocess_the_data()
-
-    # check that 'Date' is dropped
-    assert 'Date' not in df.columns
+    array = preprocess_the_data()
 
     # check that the shape of the dataframe is correct
-    assert (1, 9) == df.shape
+    assert (1, 9) == array.shape
 
     # check that the data is scaled into the appropriate range
-    assert df.max() <= 100
-    assert df.min() >= -10
+    assert array.max() <= 100
+    assert array.min() >= -10
 
 
 
