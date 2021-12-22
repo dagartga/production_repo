@@ -5,8 +5,9 @@ Repo for production level code for my Capstone Project for Springboard ML Engine
 
 ### To use my project you can do this
 
-Create a virtual environment
-'''python3 -m venv ~/.btc-ann-env'''
+Fork the repo
 
-Source it
-'''source ~/.btc-ann-env/bin/activate'''
+Run pytest 
+$pytest test_btcinfo_scraper.py
+
+$pytest test_model.py
