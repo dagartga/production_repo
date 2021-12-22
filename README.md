@@ -7,7 +7,8 @@ Repo for production level code for my Capstone Project for Springboard ML Engine
 
 Fork the repo
 
-Run pytest 
-$pytest test_btcinfo_scraper.py
+Run pytest to test the code using command line from the directory production_repo/ on your own machine
+
+$pytest test_btcinfocharts_scraper.py
 
 $pytest test_model.py
