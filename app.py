@@ -4,12 +4,15 @@ import joblib
 
 app = Flask(__name__)
 
-@app.route('/predict', methods=['POST'])
+@app.route('/predict', methods=['GET'])
 def predict():
     from model import prediction
     next_day_pred = prediction()
-    print(next_day_pred)
-    return jsonify({'output': {'BTC_next_day_price': next_day_pred}})
+
+    return jsonify({
+                    'output':
+                    {'BTC_next_day_price': str(next_day_pred[0][0])}
+                       })
 
 @app.route('/')
 def home():
