@@ -7,11 +7,14 @@ app = Flask(__name__)
 @app.route('/predict', methods=['GET'])
 def predict():
     from model import prediction
-    next_day_pred = prediction()
+    next_day_pred, todays_date = prediction()
 
     return jsonify({
                     'output':
-                    {'BTC_next_day_price': str(next_day_pred[0][0])}
+                    {
+                    'Today\'s Date' : str(todays_date),
+                    'BTC_next_day_price': str(next_day_pred[0][0])
+                    }
                        })
 
 @app.route('/')
