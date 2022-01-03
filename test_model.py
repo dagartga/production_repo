@@ -38,7 +38,7 @@ def test_get_full_dataset():
 
 def test_preprocess_the_data():
 
-    array = preprocess_the_data()
+    array, today_date = preprocess_the_data()
 
     # check that the shape of the dataframe is correct
     assert (1, 9) == array.shape
@@ -47,14 +47,19 @@ def test_preprocess_the_data():
     assert array.max() <= 100
     assert array.min() >= -10
 
+    # check that the date is a string format
+    assert type(today_date) == str
 
 
 def test_prediction():
 
-    pred = prediction()
+    pred, today_date = prediction()
 
     # check that only one value is returned
     assert pred.shape == (1,1)
 
     # check that the value is a positive number
     assert pred[0][0] >= 0
+
+    # check that the date is a string format
+    assert type(today_date) == str
