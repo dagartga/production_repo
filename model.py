@@ -59,7 +59,7 @@ def preprocess_the_data():
     df = df.drop(columns=['Date'])
 
     # get the new dataset for the most recent data
-    new_df = grab_the_data()
+    new_df, todays_date = grab_the_data()
 
     # fit the scaler to all old data
     scale.fit(df)
@@ -67,7 +67,7 @@ def preprocess_the_data():
     # scale the new data
     transformed_new_data = scale.transform(new_df)
 
-    return transformed_new_data
+    return transformed_new_data, todays_date
 
 
 def prediction():
