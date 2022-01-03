@@ -85,12 +85,12 @@ def prediction():
     ann_model = load_model('./trained_models/ANN4_reg_nextday300Adam0-01relu64Int4_341.hdf5')
 
     # load the current scaled data
-    current_scaled_data = preprocess_the_data()
+    current_scaled_data, todays_date = preprocess_the_data()
 
     # make the prediction
     pred_next_day_price = ann_model.predict(current_scaled_data)
 
-    return pred_next_day_price
+    return pred_next_day_price, todays_date
 
 
 
