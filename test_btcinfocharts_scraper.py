@@ -84,10 +84,13 @@ def test_scrape_url():
 
 def test_grab_the_data():
 
-    df = grab_the_data()
+    df, today_date = grab_the_data()
 
     # check that all the features are in the columns
     for i in range(len(features)):
         assert features[i] == df.columns[i]
     # check that the date is either today or yesterday
     assert df.index[0] == tday or df.index[0] == yday
+
+    # check that the date is a string format
+    assert type(today_date) == str
