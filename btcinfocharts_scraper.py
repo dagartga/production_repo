@@ -201,7 +201,7 @@ def grab_the_data():
         # create a dataframe from yesterday's data to be returned
         yesterday_df = pd.DataFrame(df.iloc[:,1])
         yesterday_df = yesterday_df.T
-        return yesterday_df, yday
+        return yesterday_df, yday.strftime('%Y/%m/%d')
 
     else:
         print('All of the data for today {} is available.'.format(tday))
@@ -209,4 +209,4 @@ def grab_the_data():
         # create a dataframe from today's data to be returned
         today_df = pd.DataFrame(df.iloc[:, 0])
         today_df = today_df.T
-        return today_df, tday
+        return today_df, tday.strftime('%Y/%m/%d')
