@@ -11,4 +11,3 @@ tensorflow==2.7.0
 tensorflow-hub==0.8.0
 numpy==1.21.4
 Flask
-awsebcli
