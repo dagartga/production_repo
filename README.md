@@ -3,7 +3,7 @@
 # production_repo
 Repo for production level code for my Capstone Project for Springboard ML Engineering
 
-### To use my project you can do this
+## To use my project you can do this
 
 
 Fork the repo
@@ -19,7 +19,7 @@ $virtualenv ~/.btc-pred
 $source ~/.btc-pred/Scripts/activate 
 
 
-#### To access the API locally
+### To access the API locally
 
 With the virtual environment activated
 cd into production_repo/
@@ -53,7 +53,7 @@ localhost:3000/predict
 This will take a while but should return a JSON object wtih the next day predicted price
 
 
-#### To access the API using Docker and Postman
+### To access the API using Docker and Postman
 
 
 With the virtual environment activated
@@ -93,7 +93,7 @@ Where '48000' is whatever the prediction price is
 
 
 
-#### To test the code locally
+### To test the code locally
 
 Run pytest to test the code using command line from the directory production_repo/ on your own machine
 
