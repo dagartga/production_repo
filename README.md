@@ -19,6 +19,11 @@ $virtualenv ~/.btc-pred
 $source ~/.btc-pred/Scripts/activate 
 
 
+
+
+
+
+
 ### To access the API locally
 
 With the virtual environment activated
