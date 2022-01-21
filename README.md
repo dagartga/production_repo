@@ -36,7 +36,7 @@ The model is being hosted on an EC2 instance through AWS
 
 5. Install the requirements
 
-`pip install -r requirements.txt`
+`make install`
 
 
 6. Run the app using Flask
