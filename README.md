@@ -9,11 +9,11 @@ The model is being hosted on an EC2 instance through AWS
 
 1. Test the app is running by typing into the web browser
 
-`ec2-54-67-120-212.us-west-1.compute.amazonaws.com:3000`
+`ec2-54-176-190-128.us-west-1.compute.amazonaws.com:3000`
 
 2. GET request for next day price prediction by typing into the web browser
 
-`ec2-54-67-120-212.us-west-1.compute.amazonaws.com:3000/predict`
+`ec2-54-176-190-128.us-west-1.compute.amazonaws.com:3000/predict`
 
 
 ## To use my project on your machine and run locally
