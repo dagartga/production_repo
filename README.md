@@ -5,6 +5,8 @@ Repo for production level code for my Capstone Project for Springboard ML Engine
 
 ## To GET request the Bitcoin Next Day Price Prediction model from a web browser
 
+**Currently the web service is down to avoid continuous costs**
+
 The model is being hosted on an EC2 instance through AWS
 
 1. Test the app is running by typing into the web browser
