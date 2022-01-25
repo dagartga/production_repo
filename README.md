@@ -3,100 +3,114 @@
 # production_repo
 Repo for production level code for my Capstone Project for Springboard ML Engineering
 
-### To use my project you can do this
+## To GET request the Bitcoin Next Day Price Prediction model from a web browser
+
+The model is being hosted on an EC2 instance through AWS
+
+1. Test the app is running by typing into the web browser
+
+`ec2-54-176-190-128.us-west-1.compute.amazonaws.com:3000`
+
+2. GET request for next day price prediction by typing into the web browser
+
+`ec2-54-176-190-128.us-west-1.compute.amazonaws.com:3000/predict`
 
 
-Fork the repo
+## To use my project on your machine and run locally
 
 
-**Create a virtual environment in Windows**
-
-$virtualenv ~/.btc-pred
+1. Fork the repo
 
 
-**Activate it in Windows**
+2. Create a virtual environment in Windows
 
-$source ~/.btc-pred/Scripts/activate 
-
-
-#### To access the API locally
-
-With the virtual environment activated
-cd into production_repo/
+`virtualenv ~/.btc-pred`
 
 
-**Install the requirements**
+3. Activate it in Windows
 
-$pip install -r requirements.txt
+`source ~/.btc-pred/Scripts/activate` 
 
-
-**Run the app using Flask**
-
-$python app.py
+4. cd into production_repo/
 
 
-**Web browser GET**
+5. Install the requirements
 
-First, open a web browser and type
+`make install`
 
-localhost:3000/
+
+6. Run the app using Flask
+
+`python app.py`
+
+7. Open a web browser and type
+
+`localhost:3000/`
 
 This should return "Welcome to the BTC Next Day Price Predictor"
 
-If not then there is an error try starting the process over
+If not, then there is an error. Try starting the process over
 
+8. GET request the prediction model
 
-Second, in the web browser type
-
-localhost:3000/predict
+`localhost:3000/predict`
 
 This will take a while but should return a JSON object wtih the next day predicted price
 
 
-#### To access the API using Docker and Postman
+### Run the model using Docker and Postman
 
 
-With the virtual environment activated
+1. Activate the virtual environment as listed above
 
-cd into production_repo/
+2. cd into production_repo/
 
+3. Build the Docker image
 
-**Build the Docker image**
-
-$docker build -t btc-prediction:1.0 .
-
-
-**Run the container**
-
-$docker run -p 5000:3000 btc-prediction:1.0
+`docker build -t btc-prediction:1.0 .` Do not forget the `.` at the end of the line of code
 
 
-**Open the Postman app**
+4. Run the container
 
-Click the + symbol to create a new workspace
+`docker run -p 3000:3000 btc-prediction:1.0`
 
-Use the drop down to select GET
+5. Open the Postman app
 
-In the window next to GET type in http://localhost:5000/predict
+6. Click the + symbol to create a new workspace
 
-Click the Send button
+7. Use the drop down to select GET
+
+8. In the window next to GET type in http://localhost:3000/predict
+
+9. Click the Send button
 
 After a little while it should return a JSON object with 
+
+```
 {
-  'output':
+  "output":
     {
-    'BTC_next_day_price':'48000'
+    "BTC_next_day_price":"39672.203",
+    "Today's Date":"2022/01/20"
     }
  }
+ ```
 
-Where '48000' is whatever the prediction price is
+Where `39672.203` is whatever the prediction price is for tomorrow with regard to `Today's Date`
+
+Today's Date is in the format of `YYYY/mm/dd`
 
 
-
-#### To test the code locally
+### To test the code locally
 
 Run pytest to test the code using command line from the directory production_repo/ on your own machine
 
-$pytest test_btcinfocharts_scraper.py
+1. cd into the production_repo directory
 
-$pytest test_model.py
+2. Run pytest on the web scraper
+
+`pytest test_btcinfocharts_scraper.py`
+
+3. Run pytest on the ML model
+
+`pytest test_model.py`
