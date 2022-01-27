@@ -180,14 +180,42 @@ The best model from this notebook is using ANN with
 **R-squared ANN Model: 0.9711**                  
 **MAPE ANN Model: 1.0354** 
 
-Deployment
-Docker Image
+## Deployment
+
+## Docker Image
+
 A Flask app was created with a docker image for deployment. The Dockerfile contains the code and can be deployed in any locally or in any cloud server that can host a docker image. 
-Postman
+
+## Postman
+
 The application was first tested with Postman to see if it could accept GET requests. The container was built and run locally. Through the Postman app, the bitcoin price prediction app was able to be triggered through a GET request which returned a JSON object:
 
+```
+{
+	"output":
+	{
+	"BTC_next_day_price":"39672.203",
+	"Today's Date":"2022/01/20"
+	}
+}
+```
 
 Where `39672.203` is whatever the prediction price is for tomorrow with regard to `Today's Date`
 
 Today's Date is in the format of `YYYY/mm/dd`
+
+## AWS EC2 Instance
+
+The docker image was deployed to an [AWS EC2 instance]( https://aws.amazon.com/ec2/) with the following specs:
+
+**Amazon Machine Image:** 
+	Deep Learning AMI (Amazon Linux 2) Version 57.0 - MXNet-1.8, TensorFlow-2.7, PyTorch-1.10, Neuron, & others. 		NVIDIA CUDA, cuDNN, NCCL, Intel MKL-DNN, Docker, NVIDIA-Docker & EFA support.
+
+**Instance Type:**
+	c5.xlarge with 4 vCPUS and 8 GiB Memory, up to 10 Gigabit Network Performance
+	130 GiB Storage Size
+
+Within the EC2 instance, the docker image was built and run. By mapping to port 3000 and opening to all traffic, the application can be run using a GET request via the Public IP address:3000/predict.
+
+
 
