@@ -88,7 +88,7 @@ Feature Selection was tried with forward addition of features starting from the 
 
 ## Tensorflow Artificial Neural Network model
 
-From the notebook [Bitcoin Next Day Price Prediction Using ANN Models](notebooks/Bitcoin Next Day Price Prediction Using ANN Models.ipynb)
+From the notebook [Bitcoin Next Day Price Prediction Using ANN Models](notebooks/Bitcoin%20Next%20Day%20Price%20Prediction%20Using%20ANN%20Models.ipynb)
 
 The ANN TensorFlow model was the best performing model after multiple rounds of parameter and hyperparameter 
 optimization, as well as feature selection based on model performance.  The final performance for the best ANN model is an R-squared of 0.9711 and a Mean Average Percentage Error of 1.0354.
