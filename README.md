@@ -40,23 +40,21 @@ From those 20 features, they were analyzed in a **Correlation Matrix** to narrow
 <img src="images/Correlation_Matrix.png" alt="Correlation Matrix for 20 features"/>
 
 
-## Testing different model types
-
-After the initial exploratory data analysis, the first model tested was a polynomial regression model, using 15 features from glassnode.com and a date range of 01-01-2013 to 06-10-2021. 
+# Testing different model types
 
 ## Polynomial Regression prototype
 
-From Notebook Bitcoin_Polynomial_Regression.ipynb
+From notebook [Bitcoin_Polynomial_Regression.ipynb]()
 
 The simplest model to try first seemed to be a linear regression model. By using a polynomial regression model, the many different features and their influence can be captured. The first polynomial regression model tested for 1-day price prediction was using 15 features from glassnode.com and a date range of 01-01-2013 to 06-10-2021.
 
-Determining the best number of polynomial degrees was the first step and based on comparison of initial models with degrees from 1 to 4, the best performing was degree 2, with a test R-squared of 0.988 and test RMSE of 1236 and train R-squared of 0.989 and RMSE of 1054. This showed that the model was not overfitting. The model performed poorly on the 30-day holdout validation data with an R-squared of -5.39 and RMSE of 10950.
+Determining the best number of polynomial degrees was the first step and based on comparison of initial models with degrees from 1 to 4, the best performing was degree 2, with a test R-squared of 0.988 and test RMSE of 1236 and train R-squared of 0.989 and RMSE of 1054. This showed that the model was not overfitting. The model performed poorly on the **30-day holdout validation data** with an **R-squared** of **-5.39** and **RMSE** of **10950**.
 
 Besides 1-day price prediction, other prediction date ranges were tried. These include, 2-day, log 1-day, 1-day change, 3-day, 7-day, 180-day. The best performance was from the 1-day price, which indicates that the data is more relevant for the next day than any other future day’s price. 
 
-Next was tuning the date range of data. The model was tested using data from date ranges of four, five, six, and seven years. Changing the date range of data did not improve the prediction scores. The best new date range tested was six years (01-01-2015 to 06-10-2021) with a holdout R-squared of -6.34 and a RMSE of 11739.
+Next was tuning the date range of data. The model was tested using data from date ranges of four, five, six, and seven years. Changing the date range of data did not improve the prediction scores. The best new date range tested was six years (01-01-2015 to 06-10-2021) with a **holdout R-squared** of **-6.34** and a **RMSE** of **11739**.
 
-From notebook Bitcoin_Polynomial_Regression_Feature_Matrix.ipynb
+From notebook [Bitcoin_Polynomial_Regression_Feature_Matrix.ipynb]()
 
 A significant adjustment was made to the way predictions were calculated using the polynomial regression. By calculating the percent difference between the previous day’s prediction and today’s prediction, the model’s predicted change in price is extracted. By multiplying (1 + the percent change) to the current price, it creates a prediction based on the direction and magnitude of the polynomial prediction but brings it to a starting point which is today’s actual price. 
 
@@ -66,8 +64,14 @@ Previous 1-day Predicted Price = 61452
 1-day Predicted Price = 59520
 Change in predicted prices = -1932 / 61452 = -0.0314
  New 1-day Predicted Price = 49916 * (1 - 0.0314) = 48348
+ 
+ **The best performance using polynomial regression and the current price adjustment:**
+ 	
+	RMSE:
+	R-Squared:
+ 	
 
-## Fine Tuning Tensorflow Deep Neural Network
+## Tensorflow Artificial Neural Network model
 
 The ANN TensorFlow model was the best performing model after multiple rounds of parameter and hyperparameter 
 optimization, as well as feature selection based on model performance.  The final performance for the best ANN model is an R-squared of 0.9711 and a Mean Average Percentage Error of 1.0354.
