@@ -20,7 +20,9 @@ Other than the date, all data is either continuous or discrete variables. There 
 
 ## Simple prediction benchmark
 My benchmark for prediction was to take the current daily price of bitcoin and use that as the prediction for tomorrow’s price.  
+
 **Example:** The price on October 9, 2021 was 54742. Therefor the benchmark prediction for October 10 price is 54742, which will be compared against the actual October 10 price of 55138.
+
 **The benchmark results were:**
 	R – squared: 0.869
 	MAPE: 2.194
