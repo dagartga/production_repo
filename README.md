@@ -59,11 +59,16 @@ From notebook [Bitcoin_Polynomial_Regression_Feature_Matrix.ipynb]()
 A significant adjustment was made to the way predictions were calculated using the polynomial regression. By calculating the percent difference between the previous day’s prediction and today’s prediction, the model’s predicted change in price is extracted. By multiplying (1 + the percent change) to the current price, it creates a prediction based on the direction and magnitude of the polynomial prediction but brings it to a starting point which is today’s actual price. 
 
 **Example:** 
+
 Current Price = 49916
+
 Previous 1-day Predicted Price = 61452
+
 1-day Predicted Price = 59520
+
 Change in predicted prices = -1932 / 61452 = -0.0314
- New 1-day Predicted Price = 49916 * (1 - 0.0314) = 48348
+ 
+New 1-day Predicted Price = 49916 * (1 - 0.0314) = 48348
  
  **The best performance using polynomial regression and the current price adjustment:**
  	
