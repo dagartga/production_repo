@@ -169,14 +169,6 @@ The list of features that created the best score:
     R-squared: 0.9711
     MAPE: 1.0354
 
-
-### Benchmark Statistics
-A benchmark regression model for comparison was created. The model simply used the current price as the prediction for the next day price. The idea is to see how close would someone be to predicting the next day's price by simply stating the price today.
-
-**Benchmark Stats:**
-
-    R-squared: 0.869
-    MAPE: 2.194
     
 
 ### Concluding Analysis of ANN model
