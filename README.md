@@ -48,11 +48,17 @@ From notebook [Bitcoin_Polynomial_Regression.ipynb]()
 
 The simplest model to try first seemed to be a linear regression model. By using a polynomial regression model, the many different features and their influence can be captured. The first polynomial regression model tested for 1-day price prediction was using 15 features from glassnode.com and a date range of 01-01-2013 to 06-10-2021.
 
-Determining the best number of polynomial degrees was the first step and based on comparison of initial models with degrees from 1 to 4, the best performing was degree 2, with a test R-squared of 0.988 and test RMSE of 1236 and train R-squared of 0.989 and RMSE of 1054. This showed that the model was not overfitting. The model performed poorly on the **30-day holdout validation data** with an **R-squared** of **-5.39** and **RMSE** of **10950**.
+Determining the best number of polynomial degrees was the first step and based on comparison of initial models with degrees from 1 to 4, the best performing was degree 2, with a test R-squared of 0.988 and test RMSE of 1236 and train R-squared of 0.989 and RMSE of 1054. This showed that the model was not overfitting. The model performed poorly on the **30-day holdout validation data** with the following statistics:
+	
+	R-squared: -5.39
+	RMSE: 10950
 
 Besides 1-day price prediction, other prediction date ranges were tried. These include, 2-day, log 1-day, 1-day change, 3-day, 7-day, 180-day. The best performance was from the 1-day price, which indicates that the data is more relevant for the next day than any other future day’s price. 
 
-Next was tuning the date range of data. The model was tested using data from date ranges of four, five, six, and seven years. Changing the date range of data did not improve the prediction scores. The best new date range tested was six years (01-01-2015 to 06-10-2021) with a **holdout R-squared** of **-6.34** and a **RMSE** of **11739**.
+Next was tuning the date range of data. The model was tested using data from date ranges of four, five, six, and seven years. Changing the date range of data did not improve the prediction scores. The best new date range tested was six years (01-01-2015 to 06-10-2021) with the following statistics:
+
+	R-squared: -6.34
+	RMSE: 11739
 
 From notebook [Bitcoin_Polynomial_Regression_Feature_Matrix.ipynb]()
 
