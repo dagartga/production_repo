@@ -62,7 +62,7 @@ Previous 1-day Predicted Price = 61452
 Change in predicted prices = -1932 / 61452 = -0.0314
  New 1-day Predicted Price = 49916 * (1 - 0.0314) = 48348
 
-Fine Tuning Tensorflow Deep Neural Network
+## Fine Tuning Tensorflow Deep Neural Network
 
 The ANN TensorFlow model was the best performing model after multiple rounds of parameter and hyperparameter 
 optimization, as well as feature selection based on model performance.  The final performance for the best ANN model is an R-squared of 0.9711 and a Mean Average Percentage Error of 1.0354.
