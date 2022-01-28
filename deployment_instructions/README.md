@@ -86,12 +86,13 @@ After a little while it should return a JSON object with
 {
   'output':
     {
-    'BTC_next_day_price':'48000'
+    BTC_next_day_price': "48000",
+    Today's Date: "2022/01/09"
     }
  }
 ```
 
-Where '48000' is whatever the prediction price is
+Where "48000" is whatever the prediction price is
 
 
 
