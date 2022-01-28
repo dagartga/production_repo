@@ -88,13 +88,15 @@ Feature Selection was tried with forward addition of features starting from the 
 
 ## Tensorflow Artificial Neural Network model
 
+From the notebook [Bitcoin Next Day Price Prediction Using ANN Models.ipynb](notebooks/Bitcoin Next Day Price Prediction Using ANN Models.ipynb)
+
 The ANN TensorFlow model was the best performing model after multiple rounds of parameter and hyperparameter 
 optimization, as well as feature selection based on model performance.  The final performance for the best ANN model is an R-squared of 0.9711 and a Mean Average Percentage Error of 1.0354.
-6 Artificial Neural Network Models were created. Each model had a different date range interval. The first three date ranges are from the journal article while the last three use date ranges with more current ending dates.
+6 Artificial Neural Network Models were created. Each model had a different date range interval. The first three date ranges are from this [journal article](https://link.springer.com/article/10.1007/s00521-020-05129-6) while the last three use date ranges with more current ending dates.
 
-    ANN Model 1 used data from April 1, 2013 to July 19, 2016 (Interval 1) -from [journal article](https://link.springer.com/article/10.1007/s00521-020-05129-6)
-    ANN Model 2 used data from April 1, 2013 to April 1, 2017 (Interval 2) -from [journal article](https://link.springer.com/article/10.1007/s00521-020-05129-6)
-    ANN Model 3 used data from April 1, 2013 to December 31, 2019 (Interval 3) -from [journal article](https://link.springer.com/article/10.1007/s00521-020-05129-6)
+    ANN Model 1 used data from April 1, 2013 to July 19, 2016 (Interval 1) -from journal article
+    ANN Model 2 used data from April 1, 2013 to April 1, 2017 (Interval 2) -from journal article
+    ANN Model 3 used data from April 1, 2013 to December 31, 2019 (Interval 3) -from journal article
     ANN Model 4 used data from April 1, 2013 to September 1, 2021 (Interval 4)
     ANN Model 5 used data from April 1, 2015 to September 1, 2021 (Interval 5)
     ANN Model 6 used data from April 1, 2014 to September 1, 2021 (Interval 6)
