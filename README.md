@@ -44,7 +44,7 @@ From those 20 features, they were analyzed in a **Correlation Matrix** to narrow
 
 ## Polynomial Regression prototype
 
-From notebook [Bitcoin_Polynomial_Regression.ipynb]()
+From notebook [Bitcoin_Polynomial_Regression](notebooks/Bitcoin_Polynomial_Regression.ipynb)
 
 The simplest model to try first seemed to be a linear regression model. By using a polynomial regression model, the many different features and their influence can be captured. The first polynomial regression model tested for 1-day price prediction was using 15 features from glassnode.com and a date range of 01-01-2013 to 06-10-2021.
 
@@ -60,7 +60,7 @@ Next was tuning the date range of data. The model was tested using data from dat
 	R-squared: -6.34
 	RMSE: 11739
 
-From notebook [Bitcoin_Polynomial_Regression_Feature_Matrix.ipynb]()
+From notebook [Bitcoin_Polynomial_Regression_Feature_Matrix](notebooks/Bitcoin_Polynomial_Regression_Feature_Matrix.ipynb)
 
 A significant adjustment was made to the way predictions were calculated using the polynomial regression. By calculating the percent difference between the previous day’s prediction and today’s prediction, the model’s predicted change in price is extracted. By multiplying (1 + the percent change) to the current price, it creates a prediction based on the direction and magnitude of the polynomial prediction but brings it to a starting point which is today’s actual price. 
 
