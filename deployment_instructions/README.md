@@ -82,12 +82,14 @@ In the window next to GET type in http://localhost:5000/predict
 Click the Send button
 
 After a little while it should return a JSON object with 
+```
 {
   'output':
     {
     'BTC_next_day_price':'48000'
     }
  }
+```
 
 Where '48000' is whatever the prediction price is
 
