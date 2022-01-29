@@ -238,10 +238,20 @@ Within the EC2 instance, the docker image was built and run. By mapping to port 
 
 ## To make a request to my prediction model:
 
-First, test that the instance is callable by pasting ec2-52-53-223-14.us-west-1.compute.amazonaws.com:3000 into the web browser
+First, test that the instance is callable by pasting **ec2-52-53-223-14.us-west-1.compute.amazonaws.com:3000** into the web browser
 
 It should return: **Welcome to the BTC Next Day Price Predictor**
 
-Then, call the model by pasting ec2-52-53-223-14.us-west-1.compute.amazonaws.com:3000/predict into the web browser
+Then, call the model by pasting **ec2-52-53-223-14.us-west-1.compute.amazonaws.com:3000/predict** into the web browser
 
+Which should return: 
+```
+{
+	"output":
+	{
+	"BTC_next_day_price":"39672.203",
+	"Today's Date":"2022/01/20"
+	}
+}
+```
 
