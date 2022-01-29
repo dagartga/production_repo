@@ -236,5 +236,12 @@ The docker image was deployed to an [AWS EC2 instance]( https://aws.amazon.com/e
 
 Within the EC2 instance, the docker image was built and run. By mapping to port 3000 and opening to all traffic, the application can be run using a GET request via the Public IP address:3000/predict.
 
+## To make a request to my prediction model:
+
+First, test that the instance is callable by pasting ec2-52-53-223-14.us-west-1.compute.amazonaws.com:3000 into the web browser
+
+It should return: **Welcome to the BTC Next Day Price Predictor**
+
+Then, call the model by pasting ec2-52-53-223-14.us-west-1.compute.amazonaws.com:3000/predict into the web browser
 
 
