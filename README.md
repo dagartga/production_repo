@@ -78,8 +78,8 @@ New 1-day Predicted Price = 49916 * (1 - 0.0314) = 48348
  
  **The best performance using polynomial regression and the current price adjustment:**
  	
-	RMSE: 0.663
-	R-Squared: 2546.6
+	R-Squared: 0.663
+	RMSE: 2546.6
 	
 Feature Selection was tried with forward addition of features starting from the best performing set of features and only keeping features that improved the model. It did not yield better results and the original 15 features were still the best. As well, this forward addition was tried with a smaller starting set of features and using feature importance to determine the order of features added. This did not improve importance either.
 
