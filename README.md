@@ -1,6 +1,6 @@
 [![AWS in Python 3.7.12](https://github.com/dagartga/production_repo/actions/workflows/main.yml/badge.svg)](https://github.com/dagartga/production_repo/actions/workflows/main.yml)
 
-### This project is of educational purposes and should not be used as investment advice.
+### This project is for educational purposes only and should not be used as investment advice.
 
 ## Introduction
 
